@@ -1,0 +1,35 @@
+.add-post {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    color: #595959;
+}
+
+.add-post__header {
+    font-size: 50px;
+}
+
+.add-post__input,
+.add-post__textarea {
+    border: 0px;
+    border-bottom: 1px solid #595959;
+    padding: 5px 0px;
+    margin-top: 10px;
+    font-size: 20px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.add-post__submit {
+    border-radius: 10px;
+    border: 1px solid #335ab5;
+    color: #335ab5;
+    padding: 15px 20px;
+    margin-top: 20px;
+    transition: .3s;
+}
+
+.add-post__submit:hover {
+    color: #fff;
+    background-color: #335ab5;
+}
