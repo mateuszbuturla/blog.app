@@ -1,0 +1,10 @@
+.home {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    color: #595959;
+}
+
+.home__header {
+    font-size: 50px;
+}
