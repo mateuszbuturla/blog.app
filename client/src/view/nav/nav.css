@@ -1,3 +1,33 @@
-ul {
+.nav {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    color: #595959;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+
+.nav__list {
     list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav__header {
+    font-size: 35px;
+}
+
+.nav__link {
+    font-size: 20px;
+    margin-left: 20px;
+    color: #595959;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+    transition: .2s;
+}
+
+.nav__link:hover {
+    border-bottom: 2px solid #595959;
 }
