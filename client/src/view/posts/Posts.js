@@ -1,12 +1,16 @@
 import React from 'react';
-import './posts.css';
 
-const Nav = () => {
+import Nav from '../nav/Nav';
+import Footer from '../footer/Footer';
+
+const Posts = () => {
     return (
-        <section>
+        <React.Fragment>
+            <Nav />
             <h2>Posts</h2>
-        </section>
+            <Footer />
+        </React.Fragment>
     );
 }
 
-export default Nav;
+export default Posts;

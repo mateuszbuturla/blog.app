@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Home from './view/Home';
-import AddPost from './view/AddPost';
-import Posts from './view/Posts';
-import Contact from './view/Contact';
+import Home from './view/home/Home';
+import AddPost from './view/addPost/AddPost';
+import Posts from './view/posts/Posts';
+import Contact from './view/contact/Contact';
+
+import './reset.css';
 
 const App = () => {
   return (

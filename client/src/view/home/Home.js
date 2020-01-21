@@ -1,14 +1,13 @@
 import React from 'react';
 
-import Nav from './nav/Nav';
-import Posts from './posts/Posts';
-import Footer from './footer/Footer';
+import Nav from '../nav/Nav';
+import Footer from '../footer/Footer';
 
 const Home = () => {
     return (
         <React.Fragment>
             <Nav />
-            <Posts />
+            <h2>Posts</h2>
             <Footer />
         </React.Fragment>
     );
