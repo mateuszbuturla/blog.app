@@ -52,3 +52,9 @@
     color: #d91a30;
     border: 1px solid #d91a30;
 }
+
+.add-post__valid-error {
+    color: #d91a30;
+    font-size: 18px; 
+    margin-top: 5px;
+}
