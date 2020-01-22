@@ -26,6 +26,11 @@ exports.getSinglePost = async (req, res) => {
     }
 }
 
-exports.addPost = (req, res) => {
-    console.log('add post')
+exports.addPost = async (req, res) => {
+    const { title, author, content } = req.params;
+    try {
+        db.collection('posts').insert({ _id: mongoose.Types.ObjectId(), title: title, author: author, content: content })
+    } catch (err) {
+        res.status(500).json(err);
+    }
 }

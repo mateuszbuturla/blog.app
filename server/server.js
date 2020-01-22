@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/blogapp', { useNewUrlParser: true });
 const db = mongoose.connection;
 
+global.db = db;
+
 const serverRouter = require('./server.routes');
 
 app.use((req, res, next) => {

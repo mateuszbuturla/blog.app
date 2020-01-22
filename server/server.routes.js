@@ -7,5 +7,5 @@ module.exports = (app) => {
 
     app.get('/api/post/:id', postsController.getSinglePost);
 
-    app.post('/api/addpost', postsController.addPost);
+    app.post('/api/addpost/:title/:author/:content', postsController.addPost);
 }
