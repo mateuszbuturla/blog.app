@@ -87,3 +87,8 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+.error {
+    color: #d91a30;
+    border: 1px solid #d91a30;
+}

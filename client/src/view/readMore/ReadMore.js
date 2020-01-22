@@ -84,13 +84,13 @@ class ReadMore extends React.Component {
                         this.setState({ addCommentAnnouncement: 'Comment has been added', addCommentAnnouncementError: false })
                     }
                     else if (r.status === 500)
-                        this.setState({ addCommentAnnouncement: 'Error while adding comment', addCommentAnnouncementError: false })
+                        this.setState({ addCommentAnnouncement: 'Error while adding comment', addCommentAnnouncementError: true })
                 })
 
             this.setState({ addCommentAuthor: '', addCommentContent: '' });
         }
         else {
-            this.setState({ addCommentAnnouncement: 'dasdas', addCommentAnnouncementError: true })
+            this.setState({ addCommentAnnouncement: 'Complete all fields', addCommentAnnouncementError: true })
         }
     }
 
