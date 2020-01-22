@@ -22,38 +22,31 @@ class ReadMore extends React.Component {
 
     getDataFromApi() {
         const id = this.props.match.params.id;
+        let apiLink1 = ``;
+        let apiLink2 = ``;
         if (config.clientOnThisSamePortAsServer) {
-            fetch(`/api/post/${id}`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    if (r.length > 0)
-                        this.setState({ post: r })
-                    else
-                        this.setState({ error: true })
-                })
-
-            fetch(`/api/comments/${id}`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    this.setState({ comments: r })
-                })
+            apiLink1 = `/api/post/${id}`;
+            apiLink2 = `/api/comments/${id}`;
         }
         else {
-            fetch(`http://localhost:3000/api/post/${id}`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    if (r.length > 0)
-                        this.setState({ post: r })
-                    else
-                        this.setState({ error: true })
-                })
-
-            fetch(`http://localhost:3000/api/comments/${id}`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    this.setState({ comments: r })
-                })
+            apiLink1 = `http://localhost:3000/api/post/${id}`;
+            apiLink2 = `http://localhost:3000/api/comments/${id}`;
         }
+
+        fetch(apiLink1, { method: 'POST' })
+            .then(r => r.json())
+            .then(r => {
+                if (r.length > 0)
+                    this.setState({ post: r })
+                else
+                    this.setState({ error: true })
+            })
+
+        fetch(apiLink2, { method: 'POST' })
+            .then(r => r.json())
+            .then(r => {
+                this.setState({ comments: r })
+            })
     }
 
     componentDidMount() {

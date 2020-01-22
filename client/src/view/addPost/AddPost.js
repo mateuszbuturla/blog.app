@@ -45,28 +45,21 @@ class AddPost extends React.Component {
         this.setState({ titleValid: validTitle, authorValid: validAuthor, contentValid: validContent });
 
         if (validTitle && validAuthor && validContent) {
-            if (config.clientOnThisSamePortAsServer) {
-                fetch(`/api/addpost/${title}/${author}/${content}`, { method: 'POST' })
-                    .then(r => {
-                        if (r.status === 200) {
-                            this.setState({ announcement: 'Your post has been added', announcementError: false })
-                        }
-                        else if (r.status === 500) {
-                            this.setState({ announcement: 'Error: Code 500', announcementError: true })
-                        }
-                    })
-            }
-            else {
-                fetch(`http://localhost:3000/api/addpost/${title}/${author}/${content}`, { method: 'POST' })
-                    .then(r => {
-                        if (r.status === 200) {
-                            this.setState({ announcement: 'Your post has been added', announcementError: false })
-                        }
-                        else if (r.status === 500) {
-                            this.setState({ announcement: 'Error: Code 500', announcementError: true })
-                        }
-                    })
-            }
+            let apiLink = ``;
+            if (config.clientOnThisSamePortAsServer)
+                apiLink = `/api/addpost/${title}/${author}/${content}`;
+            else
+                apiLink = `http://localhost:3000/api/addpost/${title}/${author}/${content}`;
+
+            fetch(apiLink, { method: 'POST' })
+                .then(r => {
+                    if (r.status === 200) {
+                        this.setState({ announcement: 'Your post has been added', announcementError: false })
+                    }
+                    else if (r.status === 500) {
+                        this.setState({ announcement: 'Error: Code 500', announcementError: true })
+                    }
+                })
 
             this.setState({ title: '', author: '', content: '', titleValid: true, authorValid: true, contentValid: true });
         }

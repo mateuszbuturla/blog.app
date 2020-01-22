@@ -15,22 +15,18 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        if (config.clientOnThisSamePortAsServer) {
-            fetch(`/api/newposts`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    console.log(r)
-                    this.setState({ posts: r })
-                })
-        }
-        else {
-            fetch(`http://localhost:3000/api/newposts`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    console.log(r)
-                    this.setState({ posts: r })
-                })
-        }
+        let apiLink = ``;
+        if (config.clientOnThisSamePortAsServer)
+            apiLink = `/api/newposts`;
+        else
+            apiLink = `http://localhost:3000/api/newposts`;
+
+        fetch(apiLink, { method: 'POST' })
+            .then(r => r.json())
+            .then(r => {
+                console.log(r)
+                this.setState({ posts: r })
+            })
     }
 
     render() {

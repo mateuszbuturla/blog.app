@@ -15,22 +15,19 @@ class Posts extends React.Component {
     }
 
     componentDidMount() {
-        if (config.clientOnThisSamePortAsServer) {
-            fetch(`/api/posts`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    console.log(r)
-                    this.setState({ posts: r })
-                })
-        }
-        else {
-            fetch(`http://localhost:3000/api/posts`, { method: 'POST' })
-                .then(r => r.json())
-                .then(r => {
-                    console.log(r)
-                    this.setState({ posts: r })
-                })
-        }
+        let apiLink = ``;
+        if (config.clientOnThisSamePortAsServer)
+            apiLink = `/api/posts`;
+        else
+            apiLink = `http://localhost:3000/api/posts`;
+
+        fetch(apiLink, { method: 'POST' })
+            .then(r => r.json())
+            .then(r => {
+                console.log(r)
+                this.setState({ posts: r })
+            })
+
     }
 
     render() {
