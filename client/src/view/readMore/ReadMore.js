@@ -13,10 +13,14 @@ class ReadMore extends React.Component {
     state = {
         post: [],
         comments: [],
-        error: false
+        error: false,
+        addCommentAuthor: '',
+        addCommentContent: '',
+        addCommentAnnouncement: '',
+        addCommentAnnouncementError: false,
     }
 
-    componentDidMount() {
+    getDataFromApi() {
         const id = this.props.match.params.id;
         if (config.clientOnThisSamePortAsServer) {
             fetch(`/api/post/${id}`, { method: 'POST' })
@@ -26,6 +30,12 @@ class ReadMore extends React.Component {
                         this.setState({ post: r })
                     else
                         this.setState({ error: true })
+                })
+
+            fetch(`/api/comments/${id}`, { method: 'POST' })
+                .then(r => r.json())
+                .then(r => {
+                    this.setState({ comments: r })
                 })
         }
         else {
@@ -37,17 +47,55 @@ class ReadMore extends React.Component {
                     else
                         this.setState({ error: true })
                 })
-        }
 
-        fetch(`http://localhost:3000/api/comments/${id}`, { method: 'POST' })
-            .then(r => r.json())
-            .then(r => {
-                this.setState({ comments: r })
-            })
+            fetch(`http://localhost:3000/api/comments/${id}`, { method: 'POST' })
+                .then(r => r.json())
+                .then(r => {
+                    this.setState({ comments: r })
+                })
+        }
+    }
+
+    componentDidMount() {
+        this.getDataFromApi();
+    }
+
+    handleInputChange(e) {
+        this.setState({ [e.target.id]: e.target.value });
+    }
+
+    submitAddCommentForm(e) {
+        e.preventDefault();
+        const id = this.props.match.params.id;
+        const { addCommentAuthor, addCommentContent } = this.state;
+        let validAuthor = true, validContent = true;
+
+        if (addCommentAuthor.length === 0)
+            validAuthor = false;
+
+        if (addCommentContent.length === 0)
+            validContent = false;
+
+        if (validAuthor && validContent) {
+            fetch(`http://localhost:3000/api/addcomment/${id}/${addCommentAuthor}/${addCommentContent}`, { method: 'POST' })
+                .then(r => {
+                    if (r.status === 200) {
+                        this.getDataFromApi();
+                        this.setState({ addCommentAnnouncement: 'Comment has been added', addCommentAnnouncementError: false })
+                    }
+                    else if (r.status === 500)
+                        this.setState({ addCommentAnnouncement: 'Error while adding comment', addCommentAnnouncementError: false })
+                })
+
+            this.setState({ addCommentAuthor: '', addCommentContent: '' });
+        }
+        else {
+            this.setState({ addCommentAnnouncement: 'dasdas', addCommentAnnouncementError: true })
+        }
     }
 
     render() {
-        const { post, error, comments } = this.state;
+        const { post, error, comments, addCommentAuthor, addCommentContent, addCommentAnnouncement, addCommentAnnouncementError } = this.state;
         const _comments = comments.map(comment => <Comment key={comment._id} comment={comment} />)
         return (
             <React.Fragment>
@@ -61,10 +109,19 @@ class ReadMore extends React.Component {
                             <p className="read-more__post-content">{post[0].content}</p>
                             <p className="read-more__comments">Comments:</p>
                             {_comments}
-                            <form>
+                            <form onSubmit={this.submitAddCommentForm.bind(this)}>
                                 <p className="read-more__add-comment">Add comment:</p>
-                                <input className="read-more__add-comment-input" type="text" placeholder="Author" /><br />
-                                <textarea className="read-more__add-comment-input" placeholder="Comment"></textarea><br />
+                                {
+                                    addCommentAnnouncement !== '' &&
+                                    <React.Fragment>
+                                        <div className={`${addCommentAnnouncementError === true && 'error '} read-more__add-comment-announcement`}>
+                                            {addCommentAnnouncement}
+                                        </div>
+                                        <br />
+                                    </React.Fragment>
+                                }
+                                <input className="read-more__add-comment-input" type="text" placeholder="Author" id="addCommentAuthor" value={addCommentAuthor} onChange={this.handleInputChange.bind(this)} /><br />
+                                <textarea className="read-more__add-comment-input" placeholder="Comment" id="addCommentContent" value={addCommentContent} onChange={this.handleInputChange.bind(this)}></textarea><br />
                                 <input className="read-more__input-submit" type="submit" value="Add comment" />
                             </form>
                         </React.Fragment>

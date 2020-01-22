@@ -70,3 +70,20 @@
     color: #fff;
     background-color: #335ab5;
 }
+
+.read-more__add-comment-announcement {
+    padding: 15px;
+    font-size: 17px;
+    color: #0e9404;
+    border-radius: 15px;
+    border: 1px solid #0e9404;
+    background-color: #fff;
+    display: block;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
