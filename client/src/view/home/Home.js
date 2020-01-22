@@ -6,6 +6,8 @@ import Post from '../post/Post';
 
 import './Home.css'
 
+const config = require('../../config');
+
 class Home extends React.Component {
 
     state = {
@@ -13,12 +15,22 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:3000/api/newposts`, { method: 'GET' })
-            .then(r => r.json())
-            .then(r => {
-                console.log(r)
-                this.setState({ posts: r })
-            })
+        if (config.clientOnThisSamePortAsServer) {
+            fetch(`/api/newposts`, { method: 'POST' })
+                .then(r => r.json())
+                .then(r => {
+                    console.log(r)
+                    this.setState({ posts: r })
+                })
+        }
+        else {
+            fetch(`http://localhost:3000/api/newposts`, { method: 'POST' })
+                .then(r => r.json())
+                .then(r => {
+                    console.log(r)
+                    this.setState({ posts: r })
+                })
+        }
     }
 
     render() {

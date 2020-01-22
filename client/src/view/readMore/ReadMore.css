@@ -18,3 +18,14 @@
     font-size: 20px;
     margin-top: 10px;
 }
+
+.read-more__error-code {
+    text-align: center;
+    font-size: 120px;
+    color: #d91a30;
+}
+
+.read-more__error-description {
+    text-align: center;
+    font-size: 30px;
+}
