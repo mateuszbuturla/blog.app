@@ -1,4 +1,5 @@
 const postsController = require('./controller/postsController');
+const commentsController = require('./controller/commentsController');
 
 module.exports = (app) => {
     app.post('/api/posts', postsController.getAllPosts);
@@ -8,4 +9,6 @@ module.exports = (app) => {
     app.post('/api/post/:id', postsController.getSinglePost);
 
     app.post('/api/addpost/:title/:author/:content', postsController.addPost);
+
+    app.post('/api/comments/:postId', commentsController.getComments);
 }

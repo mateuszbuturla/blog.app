@@ -1,0 +1,17 @@
+.comment {
+    margin-top: 20px;
+    padding: 15px 0px;
+    width: 400px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.comment__author {
+    font-size: 20px;
+}
+
+.comment__content {
+    margin-top: 10px;
+    width: 100%;
+    word-wrap: break-word;
+    line-height: 22px;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Nav from '../nav/Nav';
 import Footer from '../footer/Footer';
+import Comment from './comment/Comment';
 
 import './ReadMore.css';
 
@@ -11,6 +12,7 @@ class ReadMore extends React.Component {
 
     state = {
         post: [],
+        comments: [],
         error: false
     }
 
@@ -36,10 +38,17 @@ class ReadMore extends React.Component {
                         this.setState({ error: true })
                 })
         }
+
+        fetch(`http://localhost:3000/api/comments/${id}`, { method: 'POST' })
+            .then(r => r.json())
+            .then(r => {
+                this.setState({ comments: r })
+            })
     }
 
     render() {
-        const { post, error } = this.state;
+        const { post, error, comments } = this.state;
+        const _comments = comments.map(comment => <Comment key={comment._id} comment={comment} />)
         return (
             <React.Fragment>
                 <Nav />
@@ -50,6 +59,8 @@ class ReadMore extends React.Component {
                             <h2 className="read-more__post-title">{post[0].title}</h2>
                             <p className="read-more__post-author">Author: {post[0].author}</p>
                             <p className="read-more__post-content">{post[0].content}</p>
+                            <p className="read-more__comments">Comments:</p>
+                            {_comments}
                         </React.Fragment>
                     }
                     {
