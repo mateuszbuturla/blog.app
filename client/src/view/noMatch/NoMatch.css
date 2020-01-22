@@ -1,0 +1,17 @@
+.no-match {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    color: #595959;
+}
+
+.no-match__error-code {
+    text-align: center;
+    font-size: 120px;
+    color: #d91a30;
+}
+
+.no-match__error-description {
+    text-align: center;
+    font-size: 30px;
+}
