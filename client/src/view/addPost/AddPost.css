@@ -33,3 +33,22 @@
     color: #fff;
     background-color: #335ab5;
 }
+
+.add-post__announcement {
+    padding: 15px;
+    font-size: 17px;
+    color: #0e9404;
+    border-radius: 15px;
+    border: 1px solid #0e9404;
+    background-color: #fff;
+    display: block;
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #d91a30;
+    border: 1px solid #d91a30;
+}

@@ -30,6 +30,7 @@ exports.addPost = async (req, res) => {
     const { title, author, content } = req.params;
     try {
         db.collection('posts').insert({ _id: mongoose.Types.ObjectId(), title: title, author: author, content: content })
+        res.status(200).json();
     } catch (err) {
         res.status(500).json(err);
     }
