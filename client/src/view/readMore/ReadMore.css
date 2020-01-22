@@ -1,0 +1,20 @@
+.read-more {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    color: #595959;
+}
+
+.read-more__post-title {
+    font-size: 50px;
+}
+
+.read-more__post-author {
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.read-more__post-content {
+    font-size: 20px;
+    margin-top: 10px;
+}

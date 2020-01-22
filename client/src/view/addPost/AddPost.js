@@ -53,8 +53,7 @@ class AddPost extends React.Component {
                     }
                 })
 
-            this.setState({ title: '', author: '', content: '' });
-            this.setState({ titleValid: true, authorValid: true, contentValid: true });
+            this.setState({ title: '', author: '', content: '', titleValid: true, authorValid: true, contentValid: true });
         }
     }
 
