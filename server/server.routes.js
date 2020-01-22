@@ -11,4 +11,6 @@ module.exports = (app) => {
     app.post('/api/addpost/:title/:author/:content', postsController.addPost);
 
     app.post('/api/comments/:postId', commentsController.getComments);
+
+    app.post('/api/addcomment/:postId/:author/:content', commentsController.addComment);
 }
