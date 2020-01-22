@@ -34,3 +34,39 @@
     margin-top: 75px;
     font-size: 20px;
 }
+
+.read-more__add-comment {
+    font-size: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.read-more__add-comment-input {
+    min-width: 300px;
+    max-width: 300px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0;
+    border-bottom: 1px solid #cccccc;
+    font-size: 18px;
+    padding: 10px 0px;
+}
+
+.read-more__input-submit {
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #335ab5;
+    color: #335ab5;
+    padding: 15px 20px;
+    text-decoration: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: .3s;
+}
+
+.read-more__input-submit:hover {
+    color: #fff;
+    background-color: #335ab5;
+}

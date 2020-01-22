@@ -61,6 +61,12 @@ class ReadMore extends React.Component {
                             <p className="read-more__post-content">{post[0].content}</p>
                             <p className="read-more__comments">Comments:</p>
                             {_comments}
+                            <form>
+                                <p className="read-more__add-comment">Add comment:</p>
+                                <input className="read-more__add-comment-input" type="text" placeholder="Author" /><br />
+                                <textarea className="read-more__add-comment-input" placeholder="Comment"></textarea><br />
+                                <input className="read-more__input-submit" type="submit" value="Add comment" />
+                            </form>
                         </React.Fragment>
                     }
                     {
