@@ -16,6 +16,8 @@
 
 .nav__header {
     font-size: 35px;
+    position: relative;
+    z-index: 5;
 }
 
 .nav__link {
@@ -31,3 +33,47 @@
 .nav__link:hover {
     border-bottom: 2px solid #595959;
 }
+
+.burger-menu-button {
+    position: absolute;
+    top: 35px;
+    right: 0px;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    display: none;
+    background-color: #fff;
+    border: 0;
+}
+
+.burger-menu-button__icon {
+    width: 45px;
+    height: 45px;
+    display: none;
+}
+
+.burger-menu-button__icon--active {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    .nav__list {
+        position: absolute;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #fff;
+        transition: .3s;
+    }
+
+    .nav__list--active {
+        top: 75px;
+    }
+
+    .burger-menu-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  }

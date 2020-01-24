@@ -1,3 +1,3 @@
 module.exports = {
-    clientOnThisSamePortAsServer: false,
+    clientOnThisSamePortAsServer: true,
 }

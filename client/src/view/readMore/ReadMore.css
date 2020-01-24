@@ -17,6 +17,7 @@
 .read-more__post-content {
     font-size: 20px;
     margin-top: 10px;
+    word-wrap:break-word;
 }
 
 .read-more__error-code {
@@ -92,3 +93,21 @@
     color: #d91a30;
     border: 1px solid #d91a30;
 }
+
+@media screen and (max-width: 650px) {
+    .read-more__post-title {
+        font-size: 40px;
+    }
+
+    .read-more__post-author {
+        font-size: 22px;
+    }
+
+    .read-more__post-content {
+        font-size: 17px;
+    }
+
+    .read-more__comments {
+        font-size: 19px;
+    }
+  }

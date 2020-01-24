@@ -14,3 +14,14 @@
     font-size: 25px;
     margin-top: 10px;
 }
+
+@media screen and (max-width: 650px) {
+    .contact__header {
+        font-size: 40px;
+    }
+    
+    .contact__email,
+    .contact__phone {
+        font-size: 20px;
+    }
+  }

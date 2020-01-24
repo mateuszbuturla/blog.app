@@ -58,3 +58,16 @@
     font-size: 18px; 
     margin-top: 5px;
 }
+
+@media screen and (max-width: 650px) {
+    .add-post__header {
+        font-size: 40px;
+    }
+    
+    .add-post__input,
+    .add-post__textarea {
+        font-size: 17px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+  }

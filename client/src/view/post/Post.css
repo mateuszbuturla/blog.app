@@ -6,6 +6,7 @@
     padding-bottom: 50px;
     transform: scale(1);
     transition: .3s;
+    word-wrap:break-word;
 }
 
 .post:hover {
